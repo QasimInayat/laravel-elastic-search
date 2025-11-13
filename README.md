@@ -1,29 +1,44 @@
-## Installation
-<pre>composer require spatie/laravel-medialibrary</pre>
-<pre>php artisan vendor:publish --provider="Spatie\MediaLibrary\MediaLibraryServiceProvider" --tag="migrations"</pre>
-<pre>php artisan migrate</pre>
-<pre>php artisan vendor:publish --provider="Spatie\MediaLibrary\MediaLibraryServiceProvider" --tag="config"</pre>
-<pre>php artisan storage:link</pre>
-<p>See <a href="https://spatie.be/docs/laravel-medialibrary/v11/installation-setup">Spatie Media Library Installation and Setup Guide</a></p>
-<pre>'public' => [ 'driver' => 'local', 'root' => storage_path('app/public'), 'url' => env('APP_URL').'/storage', 'visibility' => 'public', ],</pre>
-<p>.env</p>
+## Document
+<pre>\documents\Elastic Search with Scout.pdf</pre>
+
+
+## Document
+<p>Edit config/elasticsearch.yml</p>
 <pre>
-    FILESYSTEM_DISK=public<br>
-    APP_URL=http://localhost
+xpack.security.enabled: false
+xpack.security.enrollment.enabled: false
+</pre>
+<pre>
+composer require elasticsearch/elasticsearch
+</pre>
+<pre>
+composer require symfony/psr-http-message-bridge
+</pre>
+<pre>
+composer require nyholm/psr7
+</pre>
+<pre>
+composer require laravel/scout
+</pre>
+<pre>
+composer require babenkoivan/elastic-scout-driver-plus
+</pre>
+<pre>
+php artisan vendor:publish --provider="Laravel\Scout\ScoutServiceProvider"
+</pre>
+<p>
+if not importin then<br>
+if it is working<br>
+php artisan scout:import "App\Models\Product"       
+</p>
+<pre>
+composer remove babenkoivan/elastic-scout-driver-plus
+</pre>
+<pre>
+composer require babenkoivan/elastic-scout-driver
+</pre>
+<pre>
+php artisan scout:import "App\Models\Product"
 </pre>
 
-
-## Image Conversion
-<pre>composer require intervention/image</pre>
-
-<p>By default conversion will be work through Que</p>
-<p>Start queue worker</p>
-<pre>php artisan queue:work</pre>
-
-<p>Or for development</p>
-<pre>php artisan queue:listen</pre>
-<pre>
-composer require spatie/image<br>
-php artisan media-library:regenerate
-</pre>
 
